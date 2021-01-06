@@ -1,7 +1,7 @@
 package route
 
 import (
-	"net/http"
+	"sao/controller"
 	"sao/middleware"
 
 	"github.com/gin-gonic/gin"
@@ -14,9 +14,7 @@ func InitRoute() {
 	route.Use(middleware.Cors())
 	normal := route.Group("normal")
 	{
-		normal.GET("/carousel", func(c *gin.Context) {
-			c.String(http.StatusOK, "HelloWorld")
-		})
+		normal.GET("/carousel", controller.GetCarousel)
 	}
 	route.Run(":8082")
 }
