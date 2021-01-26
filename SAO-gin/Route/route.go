@@ -15,6 +15,7 @@ func InitRoute() {
 	normal := route.Group("normal")
 	{
 		normal.GET("/carousel", controller.GetCarousel)
+		normal.GET("/novelList", controller.GetNovelList)
 		normal.POST("/novel", controller.GetNovel)
 	}
 	route.Run(":8082")
