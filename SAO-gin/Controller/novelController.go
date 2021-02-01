@@ -8,16 +8,11 @@ import (
 	model "sao/Model"
 )
 
-type Filter struct {
-	Key        string `json:"bookNum", form:"Key"`
-	ChapterNum int    `json:"chapterNum", form:"chapterNum"`
-}
-
 // GetNovel 获取小说数据Controller
 func GetNovel(c *gin.Context) {
 	log.Println(">>>> query novel action start <<<<")
 
-	var filter Filter
+	var filter model.NovelFilter
 	c.BindJSON(&filter)
 
 	var novels []model.Novel
@@ -53,6 +48,32 @@ func GetNovelList(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{
 		"code":    200,
 		"result":  novelList,
+		"success": true,
+	})
+}
+
+// GetNovelChapterRate` 获取小说章节目录
+func GetNovelChapterRate(c *gin.Context) {
+	log.Println(">>>> get novel chapter rate action start <<<<")
+
+	var filter model.NovelChapterNumFilter
+	c.BindJSON(&filter)
+
+	var novelChapterRate []model.NovelChapterNum
+	err := db.Select(&novelChapterRate, "SELECT chapterNum FROM NOVEL WHERE `Key`=?", filter.Key)
+	if err != nil {
+		fmt.Printf("query novel failed, err: %v\n", err)
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"code":    500,
+			"result":  err,
+			"success": false,
+		})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"code":    200,
+		"result":  novelChapterRate,
 		"success": true,
 	})
 }

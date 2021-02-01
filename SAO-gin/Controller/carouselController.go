@@ -14,7 +14,7 @@ func GetCarousel(c *gin.Context) {
 	log.Println(">>>> query carousel url action start <<<<")
 
 	var carousels []model.Carousel
-	err := db.Select(&carousels, "select Url from IMAGE WHERE Type='Carousel'")
+	err := db.Select(&carousels, "SELECT Url FROM IMAGE WHERE Type='Carousel'")
 	if err != nil {
 		fmt.Printf("query mysql failed, err: %v\n", err)
 		return

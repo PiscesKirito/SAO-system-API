@@ -17,6 +17,7 @@ func InitRoute() {
 		normal.GET("/carousel", controller.GetCarousel)
 		normal.GET("/novelList", controller.GetNovelList)
 		normal.POST("/novel", controller.GetNovel)
+		normal.POST("/novelChapterRate", controller.GetNovelChapterRate)
 	}
 	route.Run(":8082")
 }
