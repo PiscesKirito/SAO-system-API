@@ -12,7 +12,7 @@ type Novel struct {
 }
 
 type NovelList struct {
-	BookNum  string `db:"Key" json:"book_num"`
+	BookNum  string `db:"Key" json:"bookNum"`
 	BookName string `db:"BookName" json:"book"`
 	Url      string `db:"Url" json:"url"`
 }
