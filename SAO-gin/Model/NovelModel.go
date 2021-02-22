@@ -1,7 +1,7 @@
 package model
 
 type NovelFilter struct {
-	Key        string `json:"bookNum", form:"Key"`
+	Key        string `json:"key", form:"Key"`
 	ChapterNum int    `json:"chapterNum", form:"chapterNum"`
 }
 type Novel struct {
@@ -21,5 +21,5 @@ type NovelChapterNumFilter struct {
 	Key string `json:"Key", form:"Key"`
 }
 type NovelChapterNum struct {
-	ChapterNum int `db:"chapterNum", json:"chapterNum"`
+	ChapterNum int `db:"chapterNum" json:"chapterNum"`
 }
