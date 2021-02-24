@@ -10,7 +10,7 @@ import (
 
 // GetNovel 获取小说数据Controller
 func GetNovel(c *gin.Context) {
-	log.Println(">>>> query novel action start <<<<")
+	log.Println("\n>>>> query novel action start <<<<")
 
 	var filter model.NovelFilter
 	c.BindJSON(&filter)
@@ -36,7 +36,7 @@ func GetNovel(c *gin.Context) {
 
 // GetNovelList 获取小说目录Controller
 func GetNovelList(c *gin.Context) {
-	log.Println(">>>> get novel list action start <<<<")
+	log.Println("\n>>>> get novel list action start <<<<")
 
 	var novelList []model.NovelList
 	err := db.Select(&novelList, "SELECT i.`Key` , n.BookName ,i.Url FROM IMAGE i, NOVEL_BOOKS n WHERE i.`Key` = n.`Key` AND i.`Type` = 'Novel-Cover'")
@@ -54,7 +54,7 @@ func GetNovelList(c *gin.Context) {
 
 // GetNovelChapterRate` 获取小说章节目录
 func GetNovelChapterRate(c *gin.Context) {
-	log.Println(">>>> get novel chapter rate action start <<<<")
+	log.Println("\n>>>> get novel chapter rate action start <<<<")
 
 	var filter model.NovelChapterNumFilter
 	c.BindJSON(&filter)

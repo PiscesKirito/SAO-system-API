@@ -11,7 +11,7 @@ import (
 
 // GetCarousel 获取轮播图路径Controller
 func GetCarousel(c *gin.Context) {
-	log.Println(">>>> query carousel url action start <<<<")
+	log.Println("\n>>>> query carousel url action start <<<<")
 
 	var carousels []model.Carousel
 	err := db.Select(&carousels, "SELECT Url FROM IMAGE WHERE Type='Carousel'")
